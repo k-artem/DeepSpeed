@@ -11,6 +11,10 @@
 #include "inference_cublas_wrappers.h"
 #include "inference_cuda_layers.h"
 
+#ifdef BF16_AVAILABLE
+#include <cuda_bf16.h>
+#endif
+
 std::array<int, 3> gemm_algos = std::array<int, 3>({99, 99, 99});
 
 // NOTE: This activation function type enum should be always in sync

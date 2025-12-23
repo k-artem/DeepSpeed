@@ -55,7 +55,7 @@ class InferenceBuilder(CUDAOpBuilder):
 
     def sources(self):
         return [
-            'csrc/transformer/inference/csrc/pt_binding.cpp',
+            'csrc/transformer/inference/csrc/pt_binding.cu',
             'csrc/transformer/inference/csrc/gelu.cu',
             'csrc/transformer/inference/csrc/relu.cu',
             'csrc/transformer/inference/csrc/layer_norm.cu',
@@ -83,6 +83,6 @@ class InferenceBuilder(CUDAOpBuilder):
            This cannot be avoided via forward declarations for this transformer_inference extension,
            since `pt_binding.cpp` code explicitly requires the BF16 header, so disable it for now.
         """
-        if self.is_rocm_pytorch():
-            self.enable_bf16 = False
+        #if self.is_rocm_pytorch():
+        #    self.enable_bf16 = False
         return args
